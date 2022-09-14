@@ -15,10 +15,10 @@ using namespace std;
 
 class Cell;
 class Maze;
-void MY_DFS_iterative(Maze& maze, ofstream& out);
+void MY_DFS_iterative(Maze& maze, ostream& out);
 void MY_DFS_recursive(Maze& maze, Cell* cell);
-void MY_DFS_recursive_wrap(Maze& maze, ofstream& out);
-void MY_BFS(Maze& maze, ofstream& out);
+void MY_DFS_recursive_wrap(Maze& maze, ostream& out);
+void MY_BFS(Maze& maze, ostream& out);
 void DFS_iterative(vector<Cell>& maze, int numC, int start, int end);
 void DFS_recursive(vector<Cell>& maze, int numC, int start, int end, bool done);
 void BFS(vector<Cell>& maze, int numC, int start, int end);
@@ -32,7 +32,7 @@ class Cell {
 
 		Cell();
 		Cell(const int id, const int wall);
-		~Cell(){ delete from;}
+		~Cell(){ from = nullptr;}
 		vector<Cell*> neighbor(Maze& maze); // return unvisited neighbor
 		friend ostream& operator<<(ostream& str, const Cell* C);
 };
@@ -52,8 +52,9 @@ class Maze {
 		~Maze();
 		void reset();
 		bool boundary(const int id);
-		void print_path(ofstream& out);
-		void print_solution(ofstream& out);
+		void get_solution();
+		void print_path(ostream& out);
+		void print_solution(ostream& out);
 };
 
 int main() {
@@ -93,19 +94,22 @@ int main() {
 	DFS_iterative(mazeGiven, numC, Start, End);
 	DFS_recursive(mazeGiven, numC, Start, End, false);
 	BFS(mazeGiven, numC, Start, End);
-	MY_DFS_iterative(*maze, Out);
-	// MY_DFS_recursive_wrap(*maze, Out);
+	MY_DFS_iterative(*maze, cout);
+	MY_BFS(*maze, cout);
+	MY_DFS_recursive_wrap(*maze, cout);
+	// MY_DFS_iterative(*maze, Out);
 	// MY_BFS(*maze, Out);
+	// MY_DFS_recursive_wrap(*maze, Out);
 	delete maze;
 	Out.close();
 	return 0;
 }
 
-void MY_DFS_iterative(Maze& maze, ofstream& out){
+void MY_DFS_iterative(Maze& maze, ostream& out){
 	stack<Cell*> S;
 	maze.reset();
 	Cell* robot = maze.begin;
-	maze.begin = maze.begin->from;
+	maze.begin->from = maze.begin;
 	S.push(robot);
 	while(!S.empty() && !(maze.end->visited)) {
 		robot = S.top();
@@ -120,10 +124,12 @@ void MY_DFS_iterative(Maze& maze, ofstream& out){
 			}
 		}
 	}
-	// cout = out;
-	out << "DFS_iterative Solutions:" << endl;
+	out << endl << "DFS_iterative Solutions:" << endl;
+	maze.get_solution();
 	maze.print_solution(out);
 	cout << "Path length is " << maze.path.size() << endl;
+	maze.print_path(cout);
+
 }
 void DFS_iterative(vector<Cell>& maze, int numC, int start, int end){
 
@@ -131,50 +137,56 @@ void DFS_iterative(vector<Cell>& maze, int numC, int start, int end){
 void DFS_recursive(vector<Cell>& maze, int numC, int start, int end, bool done){
 
 }
-void MY_DFS_recursive_wrap(Maze& maze, ofstream& out){
+void MY_DFS_recursive_wrap(Maze& maze, ostream& out){
 	maze.reset();
 	maze.begin->from = maze.begin;
-	out << "All Moves Using DFS_recursive:" << endl;
+	out << endl << "All Moves Using DFS_recursive:" << endl;
 	MY_DFS_recursive(maze, maze.begin);
+	cout << "Path length is " << maze.path.size() << endl;
+	maze.print_path(out);
 	out << "DFS_recursive Solutions:" << endl;
+	maze.get_solution();
 	maze.print_solution(out);
 }
 void MY_DFS_recursive(Maze& maze, Cell* cell){
+	// cout << "cell: " << cell << endl;
 	cell->visited = true;
+	if(maze.end->visited) return;
 	maze.path.push_back(cell);
-	// while(!(cell->neighbor(maze))){
-	// 	cell->neighbor(maze)->from = cell;
-	// 	cell = cell->neighbor(maze);
-	// 	MY_DFS_recursive(maze, cell);
-	// }
-
+	for(auto node : cell->neighbor(maze)){
+		// cout << "node: " << node << endl;
+		if(node->visited) continue;
+		node->from = cell;
+		MY_DFS_recursive(maze, node);
+	}
 }
 void BFS(vector<Cell>& maze, int numC, int start, int end){
 
 }
-void MY_BFS(Maze& maze, ofstream& out){
+void MY_BFS(Maze& maze, ostream& out){
 	queue<Cell*> Q;
 	maze.reset();
 	Cell* robot = maze.begin;
 	maze.begin->from = maze.begin;
 	Q.push(robot);
-	while(!Q.empty() || !(maze.end->visited)) {
+	while(!Q.empty() && !(maze.end->visited)) {
 		robot = Q.front();
 		maze.path.push_back(robot);
 		Q.pop();
 		if(!(robot->visited)){
 			robot->visited = true;
-			// Cell* nb = robot->neighbor(maze);
-			// while(!nb && !(nb->from)){
-			// 	nb->from = robot;
-			// 	Q.push(nb);
-			// }
+			for(auto node : robot->neighbor(maze)){
+				if(node->from) continue;
+				node->from = robot;
+				Q.push(node);
+			}
 		}
 	}
-	// cout = out;
-	out << "BFS Solutions:" << endl;
+	out << endl << "BFS Solutions:" << endl;
+	maze.get_solution();
 	maze.print_solution(out);
 	cout << "Path length is " << maze.path.size() << endl;
+	maze.print_path(cout);
 }
 Maze::Maze(){
 	begin = nullptr;
@@ -182,20 +194,25 @@ Maze::Maze(){
 	rows = cols = 0;
 }
 Maze::~Maze(){
+	cout << endl << "Delete maze: " << this << endl;
 	reset();
-	delete begin;
-	delete end;
-	auto itr = mazemap.begin();
-	while(itr != mazemap.end()){
-		delete itr->second;
-		mazemap.erase(itr->first);
-		itr++;
+	begin = nullptr;
+	end = nullptr;
+	for(auto& pr : mazemap){
+		// cout << pr.second << endl;
+		delete pr.second;
+		// mazemap.erase(pr.first);
 	}
+
 	mazemap.clear();
 }
 void Maze::reset(){
 	path.clear();
 	solution.clear();
+	for(auto pr : mazemap){
+		(pr.second)->from = nullptr;
+		(pr.second)->visited = false;
+	}
 }
 bool Maze::boundary(const int id){
 	bool in;
@@ -204,7 +221,21 @@ bool Maze::boundary(const int id){
 	else in = false;
 	return in;
 }
-void Maze::print_path(ofstream& out){
+void Maze::get_solution(){
+	Cell* robot;
+	if(!(end->visited))
+		return;
+	else{
+		robot = end;
+		while(robot != begin){
+			solution.push_back(robot);
+			robot = robot->from;
+		}
+		solution.push_back(robot);
+	}
+}
+
+void Maze::print_path(ostream& out){
 	auto itr = path.begin();
 	out << (*itr)->id;
 	itr++;
@@ -212,20 +243,20 @@ void Maze::print_path(ofstream& out){
 		out << "->" << (*itr)->id;
 		itr++;
 	}
+	out << endl;
 }
-void Maze::print_solution(ofstream& out){
-	Cell* robot;
+void Maze::print_solution(ostream& out){
 	if(!(end->visited))
 		out << "No solution." << endl;
 	else{
-		robot = end;
-		while(robot != begin){
-			solution.push_back(robot);
-			out << robot->id << "<-";
-			robot = robot->from;
+		auto itr = solution.begin();
+		out << (*itr)->id;
+		itr++;
+		while(itr != solution.end()){
+			out << "<-" << (*itr)->id;
+			itr++;
 		}
-		solution.push_back(robot);
-		out << robot->id << endl;
+		out << endl;
 	}
 }
 Cell::Cell(){
@@ -243,7 +274,7 @@ Cell::Cell(const int id, const int wall){
 }
 // For a square maze, 0-id cell is located in the most top-left,
 // Cells are in row-major order,
-// S-W-N-E = 2184, MSB-LSB 1101(2) = 7(10) 1 indicates wall, 0 for connection. 
+// S-W-N-E = 2184, MSB-LSB Index[0, 1, 2, 3] 1101(2) = 13(10) 1 indicates wall, 0 for connection. 
 // S-W-N-E is the sequence to visit next neighbor as well
 vector<Cell*> Cell::neighbor(Maze& maze){ 
 	int markDec = wall;
@@ -260,34 +291,29 @@ vector<Cell*> Cell::neighbor(Maze& maze){
 	if(maze.boundary(id+1))
 		E = maze.mazemap.find(id+1)->second;
 
-	if(markBin[1] == '0' && S){ // S
+	if(markBin[2] == '0' && S){ // S
 		neighbor.push_back(S);
-	} if(markBin[0] == '0' && W){ // W
+	} if(markBin[3] == '0' && W){ // W
 		neighbor.push_back(W);
-	} if(markBin[3] == '0' && N){ // N
+	} if(markBin[0] == '0' && N){ // N
 		neighbor.push_back(N);
-	} if(markBin[2] == '0' && E){ // E
+	} if(markBin[1] == '0' && E){ // E
 		neighbor.push_back(E);
 	}
-	
-	for(auto node : {S, W, N, E}){
-		cout << node;
+	// cout << "this: " << this << endl;
+	// cout << "neighbor: ";
+	for(auto node : neighbor){
+		// cout << node;
 	}
-	cout << endl;
+	// cout << endl << endl;
 	return neighbor;
 }
 ostream& operator<<(ostream& str, const Cell* C){
 	if(!C) str << "nullptr; ";
-	else
-		str << "id="<< C->id << ", visited=" << C->visited << "; ";
+	else{
+		str << boolalpha << "ID="<< C->id << ", Vst=" << C->visited;
+		str << ", Cnt=" << ((C->from==nullptr)?false:true) << "; ";
+		// str << ", wall=" << C->wall << ", from=" << C->from << "; ";
+	}
 	return str;
 }
-/*
-the file maze.txt contains the following:
-
-4 5
-0
-19
-13 11 10 10 12 5 9 10 10 4 5 5 11 10 4 3 2 10 10 6
-
-*/

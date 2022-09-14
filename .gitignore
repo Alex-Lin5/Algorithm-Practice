@@ -1,5 +1,7 @@
 .vscode/
-
+~$*
+*xlsx
+*.tmp
 # Prerequisites
 *.d
 

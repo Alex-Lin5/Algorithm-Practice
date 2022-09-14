@@ -1,0 +1,11 @@
+
+DFS_iterative Solutions:
+24<-19<-18<-17
+
+BFS Solutions:
+24<-23<-18<-17
+
+All Moves Using DFS_recursive:
+17->22->21->20->16->11->6->5->10->15->12->7->8->13->14->19
+DFS_recursive Solutions:
+24<-19<-14<-13<-8<-7<-12<-17
