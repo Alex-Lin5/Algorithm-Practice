@@ -64,7 +64,7 @@ void DoublyLinkedList::MergeSortIte(Node* p1, Node* p2) {
 	// pt2 is next to pt1
 	pt1 = med = pt2 = p1;
 	while(2*batch <= size){
-		if(pt2 == p2){
+		if(pt2 == p2 || !pt1){
 			// cout << endl << "batch=" << batch;
 			// cout << endl << "MergeITR: ";
 			// printForward();
@@ -73,8 +73,8 @@ void DoublyLinkedList::MergeSortIte(Node* p1, Node* p2) {
 		} 
 		pt2 = med = pt1;
 		for(int i=1; i<=2*batch; i++){
-			if(i<batch) med = med->next;
-			if(i<size && i<2*batch) pt2 = pt2->next;
+			if(med && i<batch) med = med->next;
+			if(pt2 && i<size && i<2*batch) pt2 = pt2->next;
 			if(!med || med == tail){
 				med = p2->previous;
 				pt2 = p2;
@@ -304,6 +304,8 @@ int main() {
 	// srand(time(NULL));
 	// int a{ 130 }, b{ 310 };
 	// // int a{ 11 }, b{ 20 };
+	// // int a{ 64 }, b{ 30 };
+	// // int a{ 48 }, b{ 30 };
 	// DoublyLinkedList d1{a,b}, d2{a,b};
 	
 	// cout << endl << "Original Dlist d1: ";

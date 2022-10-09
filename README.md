@@ -4,7 +4,7 @@ Algorithm problem set and solutions written in C++
 ## Environment
 ### Windows
 Windows 11 Pro 21H2, OS build 22000.1042
-
+<br>
 **Developed under Visual Studio 2022**
 <br>
 Access info from `Project Properties > Configuration Properties > C/C++ > General`
