@@ -28,6 +28,8 @@ Copyright (C) 2021 Free Software Foundation, Inc.
 
 ### MacOS
 Monterey 12.6 
+<br>
+Darwin MacBook-Air-M2.local 21.6.0 Darwin Kernel Version 21.6.0: Mon Aug 22 20:20:07 PDT 2022; root:xnu-8020.140.49~2/RELEASE_ARM64_T8110 arm64 
 
 **Developed under Visual Studio Code**
 ```
@@ -45,7 +47,7 @@ InstallerDir: /Library/Developer/CommandLineTools/usr/bin
 - `<windows.h> , <tchar.h>` are included to find out the current working directory in Windows Platform
 - `error 'iostream' file not found.` Configuration file is not correctly set up in local machine.
 - `ssh: connect to host github.com port 22: Operation timed out.` Local network blocked the request from ssh connection
-## Acknoledge
+## Acknowledgement
 - Classnote is provided by professor Roger Chen who is the instructor of course CSE674\
 https://ecs.syracuse.edu/faculty-staff/c-y-roger-chen
 - Code writted is based on the topic and requirement of homework
