@@ -1,0 +1,123 @@
+0
+6
+12
+0 5 16
+0 4 15
+0 2 4
+0 3 12
+0 1 9
+1 3 3
+1 5 2
+2 3 14
+2 1 3
+3 4 4
+4 5 1
+5 3 2
+
+// 0
+For the shortest paths using Dijkstra's algorithm:
+The cost from 0 to 0 is 0 and the path is   0
+The cost from 0 to 1 is 7 and the path is   1<-2<-0
+The cost from 0 to 2 is 4 and the path is   2<-0
+The cost from 0 to 3 is 10 and the path is   3<-1<-2<-0
+The cost from 0 to 4 is 14 and the path is   4<-3<-1<-2<-0
+The cost from 0 to 5 is 9 and the path is   5<-1<-2<-0
+
+For the minimum spanning tree using Prim's algorithm:
+The selected edges are:
+1 2 3
+2 0 4
+3 5 2
+4 5 1
+5 1 2
+The overall cost is 12
+
+// 1
+For the shortest paths using Dijkstra's algorithm:
+The cost from 1 to 0 is infinity and no paths exist!
+The cost from 1 to 1 is 0 and the path is   1
+The cost from 1 to 2 is infinity and no paths exist!
+The cost from 1 to 3 is 3 and the path is   3<-1
+The cost from 1 to 4 is 7 and the path is   4<-3<-1
+The cost from 1 to 5 is 2 and the path is   5<-1
+
+For the minimum spanning tree using Prim's algorithm:
+The selected edges are:
+0 2 4
+2 1 3
+3 5 2
+4 5 1
+5 1 2
+The overall cost is 12
+
+// 2
+For the shortest paths using Dijkstra's algorithm:
+The cost from 2 to 0 is infinity and no paths exist!
+The cost from 2 to 1 is 3 and the path is   1<-2
+The cost from 2 to 2 is 0 and the path is   2
+The cost from 2 to 3 is 6 and the path is   3<-1<-2
+The cost from 2 to 4 is 10 and the path is   4<-3<-1<-2
+The cost from 2 to 5 is 5 and the path is   5<-1<-2
+
+For the minimum spanning tree using Prim's algorithm:
+The selected edges are:
+0 2 4
+1 2 3
+3 5 2
+4 5 1
+5 1 2
+The overall cost is 12
+
+// 3
+For the shortest paths using Dijkstra's algorithm:
+The cost from 3 to 0 is infinity and no paths exist!
+The cost from 3 to 1 is infinity and no paths exist!
+The cost from 3 to 2 is infinity and no paths exist!
+The cost from 3 to 3 is 0 and the path is   3
+The cost from 3 to 4 is 4 and the path is   4<-3
+The cost from 3 to 5 is 5 and the path is   5<-4<-3
+
+For the minimum spanning tree using Prim's algorithm:
+The selected edges are:
+0 2 4
+1 5 2
+2 1 3
+4 5 1
+5 3 2
+The overall cost is 12
+
+// 4
+For the shortest paths using Dijkstra's algorithm:
+The cost from 4 to 0 is infinity and no paths exist!
+The cost from 4 to 1 is infinity and no paths exist!
+The cost from 4 to 2 is infinity and no paths exist!
+The cost from 4 to 3 is 3 and the path is   3<-5<-4
+The cost from 4 to 4 is 0 and the path is   4
+The cost from 4 to 5 is 1 and the path is   5<-4
+
+For the minimum spanning tree using Prim's algorithm:
+The selected edges are:
+0 2 4
+1 5 2
+2 1 3
+3 5 2
+5 4 1
+The overall cost is 12
+
+// 5
+For the shortest paths using Dijkstra's algorithm:
+The cost from 5 to 0 is infinity and no paths exist!
+The cost from 5 to 1 is infinity and no paths exist!
+The cost from 5 to 2 is infinity and no paths exist!
+The cost from 5 to 3 is 2 and the path is   3<-5
+The cost from 5 to 4 is 6 and the path is   4<-3<-5
+The cost from 5 to 5 is 0 and the path is   5
+
+For the minimum spanning tree using Prim's algorithm:
+The selected edges are:
+0 2 4
+1 5 2
+2 1 3
+3 5 2
+4 5 1
+The overall cost is 12

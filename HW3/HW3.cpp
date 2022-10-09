@@ -21,20 +21,12 @@
 #include <list>
 #include <tuple>
 #include <climits>
-#include <windows.h>
-#include <tchar.h>
-
-#define BUFSIZE MAX_PATH
 
 using namespace std;
 void ShortestPath(vector<list<pair<int, int>>>& graph, vector<tuple<int, int, bool, int>>& table, vector<tuple<int, int>>& heap, int source);//20 points
 void MST(vector<list<pair<int, int>>>& graph, vector<tuple<int, int, bool, int>>& table, vector<tuple<int, int>>& heap, int source); //5 points
 
 int main() {
-	TCHAR buffer[BUFSIZE];
-	DWORD dwRet = GetCurrentDirectory(BUFSIZE, buffer);
-	// cout << endl << "Current directory is: "<< buffer << endl;
-
 	// cout << endl << "C++ default standard in g++ compiler is: " << __cplusplus << endl;
 
 	ifstream In("graph.txt");
@@ -63,6 +55,7 @@ int main() {
 
   In >> source >> nodes >> edges;
 	In >> src;
+	// source = 3;
 	for(int i=0, j=0; i<nodes; i++){
 		dst = weight = -1;
 		list<pair<int, int>> temp;
@@ -72,8 +65,7 @@ int main() {
 			In >> src;
 			j++;
 			// cout << endl << dst << " " << weight;
-		}
-		
+		}		
 		graph.push_back(temp);
 	}
 	In.close();
@@ -95,7 +87,7 @@ int main() {
 	// }
 
   //You might need to make some initialization setting for table and heap
-
+	// cout << endl << "INT_MAX=" << INT_MAX;
   ShortestPath(graph, table, heap, source);//HW2A
 
   // You might need to reset some data.
@@ -146,14 +138,20 @@ void ShortestPath(vector<list<pair<int, int>>>& graph, vector<tuple<int, int, bo
 		return;
 	}
 	// initialization
+	heap.push_back(make_tuple(source, 0));
 	for(int i=0; i<graph.size(); i++){
-		table.push_back(make_tuple(INT_MAX, -1, false, i));
+		if(i == source){
+			table.push_back(make_tuple(0, source, false, 0));
+			continue;
+		} else if(i < source){
+			table.push_back(make_tuple(INT_MAX, -1, false, i+1));
+		} else if(i > source){
+			table.push_back(make_tuple(INT_MAX, -1, false, i));
+		}
 		// (cost, from, visited, heapIndex)
 		heap.push_back(make_tuple(i, INT_MAX));
 		// (id, cost)
 	}
-	get<0>(table[source]) = 0;
-	get<1>(table[source]) = source;
 
 	// connecting
 	while(!heap.empty()){
@@ -166,10 +164,11 @@ void ShortestPath(vector<list<pair<int, int>>>& graph, vector<tuple<int, int, bo
 		// 	cout << "(" << get<0>(heap[i]) << "," << get<1>(heap[i]) << ") ";
 		// }
 		// heapify top down
-		get<3>(table[get<0>(heap[0])]) = -1;
+		get<3>(table[node]) = -1;
 		get<3>(table[get<0>(heap.back())]) = 0;
 		swap(heap[0], heap.back());
 		heap.pop_back();
+		if(get<0>(table[node]) == INT_MAX) continue; // Do not operate on unconnected node
 		int minnd = 0;
 		int size = heap.size();
 		while(minnd >= 0 && minnd < size){
@@ -181,14 +180,14 @@ void ShortestPath(vector<list<pair<int, int>>>& graph, vector<tuple<int, int, bo
 			if(2*minnd+2 < size)
 				rightchildC = get<1>(heap[2*minnd+2]);
 			else rightchildC = INT_MAX;
-			if(leftchildC < parentC && leftchildC < rightchildC){
+			if(leftchildC < parentC && leftchildC <= rightchildC){
 				// swap nodes in heap
 				swap(heap[minnd], heap[2*minnd+1]);
 				// swap heapIndex in table
 				swap(get<3>(table[get<0>(heap[minnd])]), 
 					get<3>(table[get<0>(heap[2*minnd+1])]));
 				minnd = 2*minnd+1;
-			} else if(rightchildC < parentC && rightchildC < leftchildC){
+			} else if(rightchildC < parentC && rightchildC <= leftchildC){
 				swap(heap[minnd], heap[2*minnd+2]);
 				swap(get<3>(table[get<0>(heap[minnd])]), 
 					get<3>(table[get<0>(heap[2*minnd+2])]));
@@ -205,7 +204,10 @@ void ShortestPath(vector<list<pair<int, int>>>& graph, vector<tuple<int, int, bo
 			int costThis = get<0>(table[node]);
 			int costNei = get<0>(table[neighbor]);
 			if(costThis+weight < costNei){
-				get<0>(table[neighbor]) = costThis + weight;
+				if(costThis+weight < 0)
+					get<0>(table[neighbor]) = weight;
+				else
+					get<0>(table[neighbor]) = costThis + weight;
 				get<1>(table[neighbor]) = node;
 				// heapify bottom up
 				int minhp = get<3>(table[neighbor]);
@@ -255,14 +257,22 @@ void MST(vector<list<pair<int, int>>>& graph, vector<tuple<int, int, bool, int>>
 		return;
 	}
 	// initialization
+	heap.push_back(make_tuple(source, 0));
 	for(int i=0; i<graph.size(); i++){
-		table.push_back(make_tuple(INT_MAX, -1, false, i));
+		if(i == source){
+			table.push_back(make_tuple(0, source, false, 0));
+			continue;
+		} else if(i < source){
+			table.push_back(make_tuple(INT_MAX, -1, false, i+1));
+		} else if(i > source){
+			table.push_back(make_tuple(INT_MAX, -1, false, i));
+		}
 		// (cost, from, visited, heapIndex)
 		heap.push_back(make_tuple(i, INT_MAX));
 		// (id, cost)
 	}
-	get<0>(table[source]) = 0;
-	get<1>(table[source]) = source;
+	// get<0>(table[source]) = 0;
+	// get<1>(table[source]) = source;
 
 	// connecting
 	while(!heap.empty()){
@@ -275,7 +285,7 @@ void MST(vector<list<pair<int, int>>>& graph, vector<tuple<int, int, bool, int>>
 		// 	cout << "(" << get<0>(heap[i]) << "," << get<1>(heap[i]) << ") ";
 		// }
 		// heapify top down
-		get<3>(table[get<0>(heap[0])]) = -1;
+		get<3>(table[node]) = -1;
 		get<3>(table[get<0>(heap.back())]) = 0;
 		swap(heap[0], heap.back());
 		heap.pop_back();
@@ -290,14 +300,14 @@ void MST(vector<list<pair<int, int>>>& graph, vector<tuple<int, int, bool, int>>
 			if(2*minnd+2 < size)
 				rightchildC = get<1>(heap[2*minnd+2]);
 			else rightchildC = INT_MAX;
-			if(leftchildC < parentC && leftchildC < rightchildC){
+			if(leftchildC < parentC && leftchildC <= rightchildC){
 				// swap nodes in heap
 				swap(heap[minnd], heap[2*minnd+1]);
 				// swap heapIndex in table
 				swap(get<3>(table[get<0>(heap[minnd])]), 
 					get<3>(table[get<0>(heap[2*minnd+1])]));
 				minnd = 2*minnd+1;
-			} else if(rightchildC < parentC && rightchildC < leftchildC){
+			} else if(rightchildC < parentC && rightchildC <= leftchildC){
 				swap(heap[minnd], heap[2*minnd+2]);
 				swap(get<3>(table[get<0>(heap[minnd])]), 
 					get<3>(table[get<0>(heap[2*minnd+2])]));
