@@ -2,9 +2,19 @@
 Algorithm problem set and solutions written in C++
 
 ## Environment
+`	std::cout << '\n' << "C++ default standard in g++ compiler is: " << __cplusplus << '\n';`
 ### Windows
 Windows 11 Pro 21H2, OS build 22000.1042
-<br>
+```
+#include <windows.h>
+#include <tchar.h>
+#define BUFSIZE MAX_PATH
+int main(){
+	TCHAR buffer[BUFSIZE];
+	DWORD dwRet = GetCurrentDirectory(BUFSIZE, buffer);
+	cout << "CWD: "<< buffer << endl;
+}
+```
 **Developed under Visual Studio 2022**
 <br>
 Access info from `Project Properties > Configuration Properties > C/C++ > General`
@@ -44,7 +54,6 @@ InstallerDir: /Library/Developer/CommandLineTools/usr/bin
 #define __cplusplus 199711L
 ```
 ## Note
-- `<windows.h> , <tchar.h>` are included to find out the current working directory in Windows Platform
 - `error 'iostream' file not found.` Configuration file is not correctly set up in local machine.
 - `ssh: connect to host github.com port 22: Operation timed out.` Local network blocked the request from ssh connection
 ## Acknowledgement

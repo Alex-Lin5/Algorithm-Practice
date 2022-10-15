@@ -1,0 +1,18 @@
+The maximum flow = 19
+The following edges have scheduled flow as indicated:
+The scheduled flow on edge (0, 1) = 10 out of capacity = 10
+The scheduled flow on edge (0, 2) = 9 out of capacity = 10
+The scheduled flow on edge (1, 3) = 4 out of capacity = 4
+The scheduled flow on edge (1, 4) = 6 out of capacity = 8
+The scheduled flow on edge (2, 4) = 9 out of capacity = 9
+The scheduled flow on edge (3, 5) = 9 out of capacity = 10
+The scheduled flow on edge (4, 3) = 5 out of capacity = 5
+The scheduled flow on edge (4, 5) = 10 out of capacity = 10
+
+The maximum matching = 5
+The following matchings are selected:
+(0, 8)
+(1, 5)
+(2, 6)
+(3, 9)
+(4, 7)
