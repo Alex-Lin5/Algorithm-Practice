@@ -1,12 +1,14 @@
 //HW4 maxflow and bipartite matching
-//Due: 11:59pm, Thursday Oct. 27.
+//Due: 11:59pm, Saturday Oct. 29.
 /*
 When performing BFS for max flow or max matching, you need to explore neighbors in the order of increasing node IDs.
 For example, if a node has unvisited neighbors 7, 3, 5, and 2.  Then the order for exploring neighbors will be 2, 3, 5, and 7.
 This implies that you have to sort neighbors when forming the graph.
 
 For simplicity, in the case of max flow problem, assume there will be at most one directed edge from a node to another node.
-It is possible that given two nodes n1, and n2, there is a directed edge from n1 to n2 and there is also another directed edge from n2 to n1.
+
+
+It is also assume that if there is a directed edge from n1 to n2, then there will be no edge from n2 to n1.
 
 For max matching problem, since you are dealing with undirected graph, for simplicity, you can assume that there will at most one edge between
 any two nodes.
@@ -37,7 +39,7 @@ int main() {
 
 	MaxFlow(Graph1, Table1, source, sink);
 
-	//Read in graph from graph1.txt
+	//Read in graph from graph2.txt
 	//Data initialization
 
 
