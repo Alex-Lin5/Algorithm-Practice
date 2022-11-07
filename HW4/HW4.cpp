@@ -81,7 +81,7 @@ int main() {
 	// 		cout << i << " " << pr.first << " " << pr.second << endl;
 	// 	}
 	// }
-	MaxFlow(Graph1, Table1, source, sink);
+	// MaxFlow(Graph1, Table1, source, sink);
 
 
 
@@ -124,16 +124,16 @@ int main() {
 	for(int i=0; i<Nodes+2; i++){
 		Table2[i] = make_tuple(-1, false);
 	}
-	// // print Graph2
-	// cout << endl << endl << "Graph2:" << endl;
-	// for(int i=0; i<Graph2.size(); i++){
-	// 	int src, dst;
-	// 	src = i;
-	// 	for(auto pr : Graph2[src]){
-	// 		dst = pr.first;
-	// 		cout << endl << src << " " << dst;
-	// 	}
-	// }
+	// print Graph2
+	cout << endl << endl << "Graph2:" << endl;
+	for(int i=0; i<Graph2.size(); i++){
+		int src, dst;
+		src = i;
+		for(auto pr : Graph2[src]){
+			dst = pr.first;
+			cout << endl << src << " " << dst;
+		}
+	}
 	Nodes = Lnum+Rnum;
 	BipartiteMatching(Graph2, Table2, Nodes, Nodes+1);
 	return 0;
@@ -157,13 +157,13 @@ void BipartiteMatching(vector<list<pair<int, int>>>& G, vector<tuple<int, bool>>
 	// Connecting
 	while(BFS(G, Gup, T, s, t)){ // O(VE)*O(E)
 		int node;
-		// // print path
-		// node = t;
-		// cout << endl << "Current selected path is: " << node;
-		// while(node != s){
-		// 	node = get<0>(T[node]);
-		// 	cout << "<-" << node;
-		// }
+		// print path
+		node = t;
+		cout << endl << "Current selected path is: " << node;
+		while(node != s){
+			node = get<0>(T[node]);
+			cout << "<-" << node;
+		}
 
 		// update residual graph
 		node = t;
@@ -314,6 +314,7 @@ int BFS(vector<list<pair<int, int>>>& Gcom, vector<list<pair<int, int>>>& Gup, v
 		if(get<1>(T[src]) == true) continue; // ignore visited node
 		get<1>(T[src]) = true;
 		// vector<int> neib;
+		cout << endl << src << ": ";
 		for(auto pr: Gcom[src]){
 			int dst, cap, wei;
 			dst = pr.first;
@@ -349,6 +350,8 @@ int BFS(vector<list<pair<int, int>>>& Gcom, vector<list<pair<int, int>>>& Gup, v
 			}	else{ // wei == 0
 				cout << endl << "Dummy edge in graph from " << src << " to " << dst;
 			}
+			// print neighbors
+			cout << dst << " ";
 		}
 
 		// // print neib
