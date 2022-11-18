@@ -70,9 +70,7 @@ int main() {
 	t1.add_node(46);
 	t1.add_node(30);
 	t1.add_node(34);
-	t1.in_order_traversal(t1.root);
 	t1.delete_node(48);
-	t1.in_order_traversal(t1.root);
 	// // random input
 	// t1.add_node(100);
 	// t1.add_node(20); // 7 nodes
@@ -89,6 +87,8 @@ int main() {
   // t1.add_node(92);
   // t1.add_node(34);
   // t1.add_node(88);
+  // cout << endl;
+  // t1.in_order_traversal(t1.root);
 	// t1.delete_node(45);
 	// t1.delete_node(50);
 	// t1.delete_node(46);
@@ -99,6 +99,8 @@ int main() {
   // t1.delete_node(92);
   // t1.delete_node(34);
   // t1.delete_node(88);
+  // cout << endl;
+  // t1.in_order_traversal(t1.root);
 	// // left heavy 7 0, pat 3
 	// t1.add_node(0);
 	// t1.add_node(0);
@@ -107,6 +109,8 @@ int main() {
 	// t1.add_node(0);
 	// t1.add_node(0);
 	// t1.add_node(0);
+  // cout << endl;
+  // t1.in_order_traversal(t1.root);
 	// t1.delete_node(0);
 	// t1.delete_node(0);
 	// t1.delete_node(0);
@@ -130,6 +134,8 @@ int main() {
   // t1.add_node(11);
   // t1.add_node(12);
   // t1.add_node(13);
+  // cout << endl;
+  // t1.in_order_traversal(t1.root);
   // t1.delete_node(1);
   // t1.delete_node(2);
   // t1.delete_node(3);
@@ -151,10 +157,10 @@ void avl_tree::in_order_traversal(node *p){
   if(p == nullptr) return;
   in_order_traversal(p->l_child);
   cout << "(" << p->value << " " << p->height << ") ";
-	if(p->l_child)
-		cout << p->l_child->value << "/ ";
-	if(p->r_child)
-		cout << "\\" << p->r_child->value << " ";
+	// if(p->l_child)
+	// 	cout << p->l_child->value << "/ ";
+	// if(p->r_child)
+	// 	cout << "\\" << p->r_child->value << " ";
   in_order_traversal(p->r_child);
 }
 
@@ -188,8 +194,8 @@ void avl_tree::add_node(int i){
     }
   }
 	// cout << endl << "Add: node=" << addn << ", value=" << addn->value;
-	cout << endl;
-	in_order_traversal(root);
+	// cout << endl;
+	// in_order_traversal(root);
   // update height and solve violation
   node *an = nullptr; int pat = -1;
 	auto pr = height_update(addn);
@@ -224,7 +230,7 @@ void avl_tree::add_node(int i){
 }
 void avl_tree::delete_node(int i){
   if(!root){
-    cout << endl << "Root is not existed";
+    // cout << endl << "Root is not existed";
     return;
   }
   node* dlt = root;
@@ -234,12 +240,12 @@ void avl_tree::delete_node(int i){
     else if(i > dlt->value) dlt = dlt->r_child;
     else break; // i == dlt->value
   }
-  cout << endl;
-  in_order_traversal(root);
-	cout << endl << "Del: node=" << dlt << ", value=" << i;
-  if(dlt) cout << ", hei=" << dlt->height;
+  // cout << endl;
+  // in_order_traversal(root);
+	// cout << endl << "Del: node=" << dlt << ", value=" << i;
+  // if(dlt) cout << ", hei=" << dlt->height;
   if(!dlt){
-    cout << endl << "Node with value " << i << " is not existed in this tree. Root=" << root;
+    // cout << endl << "Node with value " << i << " is not existed in this tree. Root=" << root;
     return;
   } else if(!dlt->l_child || !dlt->r_child){ // trivial case
     // node* op = root;
@@ -334,15 +340,15 @@ void avl_tree::delete_node(int i){
     }
 
   } while(an);
-	cout << endl;
-	in_order_traversal(root);
+	// cout << endl;
+	// in_order_traversal(root);
 }
 pair<node *, int> avl_tree::height_update(node *p){
   if(!p){
     cout << endl << "Node passed is not existed.";
     return make_pair(nullptr, -1);
   }
-	cout << endl << "Height: " << "node=" << p << ", val=" << p->value << ", hei=" << p->height;
+	// cout << endl << "Height: " << "node=" << p << ", val=" << p->value << ", hei=" << p->height;
   node *op = p;
   do{
     // update height
@@ -400,7 +406,7 @@ pair<node *, int> avl_tree::height_update(node *p){
     else if(p1 == op->r_child && p2 == p1->l_child) pat = 2;
     else if(p1 == op->l_child && p2 == p1->l_child) pat = 3;
     else if(p1 == op->l_child && p2 == p1->r_child) pat = 4;
-		cout << ". pat=" << pat;
+		// cout << ". pat=" << pat;
     return make_pair(op, pat);
   }
 }
