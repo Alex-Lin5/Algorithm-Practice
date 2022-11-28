@@ -28,17 +28,17 @@ public:
 
 	
 	void delete_1(node* p, bool b);
-	//Case 1 of delete_node; p points to the parent of double black node; b is true if double black is the left child of its parent; else b is true.
+	//Case 1 of delete_node; p points to the parent of double black node; b is true if double black is the left child of its parent; else b is false.
 
 	void delete_2A(node* p, bool b);
-	//Case 2A of delete_node; p points to the parent of double black node; b is true if double black is the left child of its parent; else b is true.
+	//Case 2A of delete_node; p points to the parent of double black node; b is true if double black is the left child of its parent; else b is false.
 
 	void delete_2B(node* p, bool b);
-	//Case 2B of delete_node; p points to the parent of double black node; b is true if double black is the left child of its parent; else b is true.
+	//Case 2B of delete_node; p points to the parent of double black node; b is true if double black is the left child of its parent; else b is false.
 
 
 	void delete_3(node* p, bool b);
-	//Case 3 of delete_node; p points to the parent of double black node; b is true if double black is the left child of its parent; else b is true.
+	//Case 3 of delete_node; p points to the parent of double black node; b is true if double black is the left child of its parent; else b is false.
 
 
 	//For the following, during traveral, print (value, color) of each node.
