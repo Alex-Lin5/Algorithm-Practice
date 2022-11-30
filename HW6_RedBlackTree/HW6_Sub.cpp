@@ -37,16 +37,16 @@ public:
 
 int main() {
 	tree T1;
-	// T1.add_node(50);
-	// T1.add_node(100);
-	// T1.add_node(30);
-	// T1.add_node(200);
-	// T1.add_node(300);
-	// T1.add_node(250);
-	// T1.add_node(280);
-	// T1.delete_node(200);
-	// cout << endl;
-	// T1.InorderPrint(T1.root);
+	T1.add_node(50);
+	T1.add_node(100);
+	T1.add_node(30);
+	T1.add_node(200);
+	T1.add_node(300);
+	T1.add_node(250);
+	T1.add_node(280);
+	T1.delete_node(200);
+	cout << endl;
+	T1.InorderPrint(T1.root);
 	// T1.add_node(40);
 	// T1.add_node(100);
 	// T1.add_node(400);
@@ -84,35 +84,35 @@ int main() {
   // T1.delete_node(0);
   // T1.delete_node(0);	
   // T1.delete_node(0);
-  // right heavy, pat 1
-  T1.add_node(1);
-  T1.add_node(2);
-  T1.add_node(3);
-  T1.add_node(4);
-  T1.add_node(5);
-  T1.add_node(6);
-  T1.add_node(7);
-  T1.add_node(8);
-  T1.add_node(9);
-  T1.add_node(10);
-  T1.add_node(11);
-  T1.add_node(12);
-  T1.add_node(13);
-  cout << endl;
-  T1.InorderPrint(T1.root);
-  T1.delete_node(1);
-  T1.delete_node(2);
-  T1.delete_node(3);
-  T1.delete_node(4);
-  T1.delete_node(5);
-  T1.delete_node(6);
-  T1.delete_node(7);
-  T1.delete_node(8);
-  T1.delete_node(9);
-  T1.delete_node(10);
-  T1.delete_node(11);
-  T1.delete_node(12);
-  T1.delete_node(13);
+  // // right heavy, pat 1
+  // T1.add_node(1);
+  // T1.add_node(2);
+  // T1.add_node(3);
+  // T1.add_node(4);
+  // T1.add_node(5);
+  // T1.add_node(6);
+  // T1.add_node(7);
+  // T1.add_node(8);
+  // T1.add_node(9);
+  // T1.add_node(10);
+  // T1.add_node(11);
+  // T1.add_node(12);
+  // T1.add_node(13);
+  // cout << endl;
+  // T1.InorderPrint(T1.root);
+  // T1.delete_node(1);
+  // T1.delete_node(2);
+  // T1.delete_node(3);
+  // T1.delete_node(4);
+  // T1.delete_node(5);
+  // T1.delete_node(6);
+  // T1.delete_node(7);
+  // T1.delete_node(8);
+  // T1.delete_node(9);
+  // T1.delete_node(10);
+  // T1.delete_node(11);
+  // T1.delete_node(12);
+  // T1.delete_node(13);
 
 	return 0;
 }
@@ -197,8 +197,8 @@ void tree::add_node(int i){
 		return;
 	} 
   if(root->color) root->color = false; //always keep root node in block
-  cout << endl;
-  InorderPrint(root);
+  // cout << endl;
+  // InorderPrint(root);
   // find the leaf position of new adding node
   op = root;
   while(op != nullptr){
@@ -278,7 +278,7 @@ void tree::add_node(int i){
       // cout << endl << "Unkown status from uncle node during adding " << gc << ", val=" << i;
       // break;
     }
-    cout << ", cases " << casee;
+    // cout << ", cases " << casee;
     // break condition
     if(casee == 1) break;
     if(op == root){
@@ -294,7 +294,7 @@ void tree::add_node(int i){
 void tree::delete_node(int i){
   node *dlt, *suc, *sib, *op, *db;
   if(!root){
-    cout << endl << "Root is not existed";
+    // cout << endl << "Root is not existed";
     return;
   }
   // find delete node in tree
@@ -304,11 +304,11 @@ void tree::delete_node(int i){
     else if(i > dlt->value) dlt = dlt->p_Rchild;
     else break; // i == dlt->value
   }
-  cout << endl;
-  InorderPrint(root);
-	cout << endl << "Del: node=" << dlt << ", value=" << i;
+  // cout << endl;
+  // InorderPrint(root);
+	// cout << endl << "Del: node=" << dlt << ", value=" << i;
   if(!dlt){
-    cout << endl << "Node with value " << i << " is not existed in this tree. Root=" << root;
+    // cout << endl << "Node with value " << i << " is not existed in this tree. Root=" << root;
     return;
   }
   // find successor of delete node
@@ -395,7 +395,7 @@ void tree::delete_node(int i){
       cases = 3;
     } else
       cout << endl << "Unknown status during deleting node " << dlt << ", val=" << i;
-    cout << ", cases " << cases;
+    // cout << ", cases " << cases;
   } while(db && db->p_parent);
   if(suc == suc->p_parent->p_Lchild) suc->p_parent->p_Lchild = nullptr;
   else if(suc == suc->p_parent->p_Rchild) suc->p_parent->p_Rchild = nullptr;
@@ -426,34 +426,42 @@ void tree::delete_1(node* p, bool b){
     p1->color = an->color;
     an->color = p->color;
     R_rotate(an);
+    // an->p_Rchild = nullptr;
   } else if(pat == RR){
     p1->p_Rchild->color = p1->color;
     p1->color = an->color;
     an->color = p->color;
     L_rotate(an);
+    // an->p_Lchild = nullptr;
   } else if(pat == LR){
     p1->p_Rchild->color = p1->color;
     p1->color = an->color;
     an->color = p->color;
     L_rotate(an->p_Lchild);
     R_rotate(an);
+    // an->p_Rchild = nullptr;
   } else if(pat == RL){
     p1->p_Lchild->color = p1->color;
     p1->color = an->color;
     an->color = p->color;
     R_rotate(an->p_Rchild);
     L_rotate(an);
+    // an->p_Lchild = nullptr;
   }
+  // delete p;
 }
 void tree::delete_2A(node* p, bool b){
   if(!p) cout << endl << "In delete case 2A, nullptr is passed.";
   node *an;
   an = p->p_parent;
   if(p == an->p_Lchild){
+    // an->p_Lchild = nullptr;
     an->p_Rchild->color = true;
   } else if(p == an->p_Rchild){
+    // an->p_Rchild = nullptr;
     an->p_Lchild->color = true;
   } else cout << endl << "In delete case 2A, parent connection lost from action node " << an << ", val=" << an->value;
+  // delete p;
 }
 void tree::delete_2B(node* p, bool b){
   if(!p) cout << endl << "In delete case 2B, nullptr is passed.";
@@ -461,10 +469,13 @@ void tree::delete_2B(node* p, bool b){
   an = p->p_parent;
   an->color = false;
   if(p == an->p_Lchild){
+    // an->p_Lchild = nullptr;
     an->p_Rchild->color = true;
   } else if(p == an->p_Rchild){
+    // an->p_Rchild = nullptr;
     an->p_Lchild->color = true;
   } else cout << endl << "In delete case 2B, parent connection lost from action node " << an << ", val=" << an->value;
+  // delete p;
 }
 void tree::delete_3(node* p, bool b){
   if(!p) cout << endl << "In delete case 3, nullptr is passed.";
@@ -490,9 +501,9 @@ void tree::InorderPrint(node * p){ //Print all nodes of a subtree rooted at node
   else
     cout << "B";
   cout << ") ";
-  if(p->p_Lchild)
-    cout << p->p_Lchild->value << "/";
-  if(p->p_Rchild)
-    cout << "\\" << p->p_Rchild->value << " ";
+  // if(p->p_Lchild)
+  //   cout << p->p_Lchild->value << "/";
+  // if(p->p_Rchild)
+  //   cout << "\\" << p->p_Rchild->value << " ";
   InorderPrint(p->p_Rchild);
 }
