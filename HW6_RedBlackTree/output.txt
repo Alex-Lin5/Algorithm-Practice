@@ -1,0 +1,318 @@
+	T1.add_node(50);
+	T1.add_node(100);
+	T1.add_node(30);
+	T1.add_node(200);
+	T1.add_node(300);
+	T1.add_node(250);
+	T1.add_node(280);
+	T1.delete_node(200);
+	cout << endl;
+	T1.InorderPrint(T1.root);
+  (30 B) (50 B) (100 B) (250 R) (280 B) (300 R)
+	T1.add_node(40);
+	T1.add_node(100);
+	T1.add_node(400);
+	T1.add_node(208);
+	T1.add_node(300);
+	T1.add_node(255);
+	T1.add_node(28);
+	cout << endl;
+	T1.InorderPrint(T1.root);
+  (28 R) (30 B) (40 R) (50 R) (100 R) (100 B) (208 R) (250 B) (255 R) (280 B) (300 R) (300 R) (400 B)
+  T1.delete_node(40);
+  T1.delete_node(100);
+  T1.delete_node(50);
+  T1.delete_node(88);
+  T1.delete_node(30);
+  T1.delete_node(250);
+  T1.delete_node(200);
+  T1.delete_node(300);	
+  T1.delete_node(280);
+  //////////////////////////////////
+  // left heavy 7 0, pat 3
+  T1.add_node(0);
+  T1.add_node(0);
+  T1.add_node(0);
+  T1.add_node(0);
+  T1.add_node(0);
+  T1.add_node(0);
+  T1.add_node(0);
+  cout << endl;
+  T1.InorderPrint(T1.root);
+  (0 R) (0 B) (0 R) (0 R) (0 B) (0 B) (0 B)
+  T1.delete_node(0);
+  T1.delete_node(0);
+  T1.delete_node(0);
+  T1.delete_node(88);
+  T1.delete_node(0);
+  T1.delete_node(0);
+  T1.delete_node(0);
+  T1.delete_node(0);	
+  T1.delete_node(0);
+  //////////////////////////////////////
+  // right heavy, pat 1
+  T1.add_node(1);
+  T1.add_node(2);
+  T1.add_node(3);
+  T1.add_node(4);
+  T1.add_node(5);
+  T1.add_node(6);
+  T1.add_node(7);
+  T1.add_node(8);
+  T1.add_node(9);
+  T1.add_node(10);
+  T1.add_node(11);
+  T1.add_node(12);
+  T1.add_node(13);
+  cout << endl;
+  T1.InorderPrint(T1.root);
+  (1 B) (2 B) (3 B) (4 B) (5 B) (6 R) (7 B) (8 B) (9 B) (10 R) (11 R) (12 B) (13 R)  
+  T1.delete_node(1);
+  T1.delete_node(2);
+  T1.delete_node(3);
+  T1.delete_node(4);
+  T1.delete_node(5);
+  T1.delete_node(6);
+  T1.delete_node(7);
+  T1.delete_node(8);
+  T1.delete_node(9);
+  T1.delete_node(10);
+  T1.delete_node(11);
+  T1.delete_node(12);
+  T1.delete_node(13);
+
+///////////////////////////////
+///////////////////////////////
+cout << "avl_tree 1 (10pts)" << endl;
+	tree t1;
+	t1.add_node(45);
+	t1.add_node(50);
+	t1.add_node(46);
+	t1.add_node(30);
+	t1.add_node(34);
+	t1.add_node(48);
+	t1.add_node(25);
+	t1.add_node(60);
+	t1.add_node(47);
+	t1.InorderPrint(t1.root); //2pts
+	cout << "    2pts" << endl;
+	t1.delete_node(60);
+	t1.InorderPrint(t1.root); //3pts
+	cout << "    3pts" << endl;
+	t1.add_node(70);
+	t1.add_node(40);
+	t1.add_node(32);
+	t1.add_node(10);
+	t1.InorderPrint(t1.root); //2pts
+	cout << "    2pts" << endl;
+	t1.delete_node(70);
+	t1.InorderPrint(t1.root); //3pts
+	cout << "    3pts" << endl;
+
+
+
+	cout << endl;
+	cout << "avl_tree 2 (10pts)" << endl;
+	tree t2;
+	t2.add_node(100);
+	t2.add_node(50);
+	t2.add_node(200);
+	t2.add_node(30);
+	t2.add_node(80);
+	t2.add_node(150);
+	t2.add_node(300);
+	t2.add_node(10);
+	t2.add_node(40);
+	t2.add_node(90);
+	t2.add_node(170);
+	t2.add_node(5);
+	t2.InorderPrint(t2.root); //3pts
+	cout << "    3pts" << endl;
+	t2.delete_node(300);
+	t2.InorderPrint(t2.root); //7pts
+	cout << "    7pts" << endl;
+
+	tree t3;
+	cout << endl;
+	cout << "avl_tree 3 (15pts)" << endl;
+	t3.add_node(100);
+	t3.add_node(50);
+	t3.add_node(200);
+	t3.add_node(300);
+	t3.add_node(100);
+	t3.delete_node(100);
+	t3.InorderPrint(t3.root); // 2pts
+	cout << "    2pts" << endl;
+	t3.add_node(100);
+	t3.add_node(100);
+	t3.add_node(100);
+	t3.add_node(100);
+	t3.add_node(100);
+	t3.add_node(100);
+	t3.InorderPrint(t3.root); //3pts
+	cout << "    3pts" << endl;
+	t3.delete_node(200);
+	t3.InorderPrint(t3.root); //2pts
+	cout << "    2pts" << endl;
+	t3.delete_node(300);
+	t3.InorderPrint(t3.root); //2pts
+	cout << "    2pts" << endl;
+	t3.delete_node(100);
+	t3.InorderPrint(t3.root); //3pts
+	cout << "    3pts" << endl;
+	t3.delete_node(100);
+	t3.InorderPrint(t3.root); //3pts
+	cout << "    3pts" << endl;
+
+avl_tree 1 (10pts)
+(25 R) (30 B) (34 B) (45 B) (46 B) (47 R) (48 B) (50 B) (60 B)     2pts
+(25 R) (30 B) (34 B) (45 B) (46 B) (47 B) (48 B) (50 B)     3pts
+(10 R) (25 B) (30 R) (32 B) (34 B) (40 R) (45 B) (46 B) (47 B) (48 B) (50 B) (70 R)     2pts
+(10 R) (25 B) (30 R) (32 B) (34 B) (40 R) (45 B) (46 B) (47 B) (48 B) (50 B)     3pts
+
+avl_tree 2 (10pts)
+(5 R) (10 B) (30 R) (40 B) (50 B) (80 B) (90 R) (100 B) (150 B) (170 R) (200 B) (300 B)     3pts
+(5 R) (10 B) (30 R) (40 B) (50 B) (80 B) (90 R) (100 B) (150 B) (170 B) (200 B)     7pts
+
+avl_tree 3 (15pts)
+(50 B) (100 R) (200 B) (300 B)     2pts
+(50 B) (100 R) (100 R) (100 B) (100 B) (100 B) (100 B) (100 B) (200 B) (300 B)     3pts
+(50 B) (100 R) (100 B) (100 B) (100 B) (100 B) (100 B) (100 R) (300 B)     2pts
+(50 B) (100 R) (100 B) (100 B) (100 B) (100 B) (100 B) (100 B)     2pts
+(50 B) (100 R) (100 R) (100 B) (100 B) (100 B) (100 R)     3pts
+(50 B) (100 R) (100 R) (100 B) (100 B) (100 B)     3pts
+
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// Grading input
+	cout << " Red black tree 3  (8pts)" << endl;
+	tree T3;
+	T3.add_node(50);
+	T3.add_node(100);
+	T3.add_node(30);
+	T3.add_node(200);
+	T3.add_node(300);
+	T3.add_node(250);
+	T3.add_node(280);
+	T3.InorderPrint(T3.root);
+	cout << "    4pts" << endl;
+	T3.delete_node(30);
+	T3.InorderPrint(T3.root);
+	cout << "    4pts" << endl;
+	cout << endl;
+	cout << " Red black tree 4 (9pts)" << endl;
+	tree T4;
+	T4.add_node(47);
+	T4.add_node(32);
+	T4.add_node(71);
+	T4.add_node(20);
+	T4.add_node(35);
+	T4.add_node(65);
+	T4.add_node(85);
+	T4.add_node(34);
+	T4.add_node(60);
+	T4.add_node(82);
+	T4.add_node(92);
+	T4.InorderPrint(T4.root);
+	cout << "    3pts" << endl;
+	T4.delete_node(47);
+	T4.InorderPrint(T4.root);
+	cout << "    3pts" << endl;
+	T4.delete_node(60);
+	T4.delete_node(85);
+	T4.InorderPrint(T4.root);
+	cout << "    3pts" << endl;
+	cout << endl;
+	cout << endl;
+	cout << " Red black tree 5 (12pts)" << endl;
+	tree T5;
+	T5.add_node(100);
+	T5.add_node(200);
+	T5.add_node(300);
+	T5.add_node(400);
+	T5.add_node(50);
+	T5.add_node(150);
+	T5.add_node(160);
+	T5.add_node(130);
+	T5.add_node(155);
+	T5.InorderPrint(T5.root);
+	cout << "    2pts" << endl;
+	T5.delete_node(150);
+	T5.InorderPrint(T5.root);
+	cout << "    2pts" << endl;
+	T5.delete_node(155);
+	T5.InorderPrint(T5.root);
+	cout << "    2pts" << endl;
+	T5.delete_node(160);
+	T5.InorderPrint(T5.root);
+	cout << "    2pts" << endl;
+	T5.delete_node(200);
+	T5.InorderPrint(T5.root);
+	cout << "    2pts" << endl;
+	T5.delete_node(300);
+	T5.InorderPrint(T5.root);
+	cout << "    2pts" << endl;
+	cout << endl;
+	cout << endl;
+	cout << " Red black tree 6 (13pts)" << endl;
+	tree t6;
+	t6.add_node(100);
+	t6.add_node(50);
+	t6.add_node(200);
+	t6.add_node(300);
+	t6.add_node(100);
+	t6.delete_node(100);
+	t6.InorderPrint(t6.root);
+	cout << "    2pts" << endl;
+	t6.add_node(100);
+	t6.add_node(100);
+	t6.add_node(100);
+	t6.add_node(100);
+	t6.add_node(100);
+	t6.InorderPrint(t6.root);
+	cout << "    3pts" << endl;
+	t6.delete_node(200);
+	t6.InorderPrint(t6.root);
+	cout << "    2pts" << endl;
+	t6.delete_node(300);
+	t6.InorderPrint(t6.root);
+	cout << "    2pts" << endl;
+	t6.delete_node(100);
+	t6.InorderPrint(t6.root);
+	cout << "    2pts" << endl;
+	t6.delete_node(100);
+	t6.InorderPrint(t6.root);
+	cout << "    2pts" << endl;
+
+ Red black tree 3  (8pts)
+(30 B) (50 B) (100 B) (200 R) (250 R) (280 B) (300 R)     4pts
+(50 B) (100 R) (200 B) (250 R) (280 B) (300 R)     4pts
+
+ Red black tree 4 (9pts)
+// my output
+(20 B) (32 B) (34 R) (35 B) (47 B) (60 R) (65 B) (71 B) (82 R) (85 B) (92 R)     3pts
+(20 B) (32 B) (34 R) (35 B) (60 B) (65 B) (71 B) (82 R) (85 B) (92 R)     3pts
+(20 B) (32 B) (34 R) (35 B) (65 B) (71 B) (82 B) (92 B)     3pts
+
+// desired output
+(20 B) (32 R*) (34 R) (35 B) (47 B) (60 R) (65 B) (71 R*) (82 R) (85 B) (92 R)     3pts 
+(20 B) (32 R*) (34 R) (35 B) (60 B) (65 B) (71 R*) (82 R) (85 B) (92 R)     3pts 
+(20 B) (32 R*) (34 R) (35 B) (65 B) (71 B-) (82 R) (92 B)     3pts 
+
+ Red black tree 5 (12pts)
+(50 B) (100 R) (130 B) (150 B) (155 R) (160 B) (200 R) (300 B) (400 R)     2pts
+(50 B) (100 R) (130 B) (155 B) (160 B) (200 R) (300 B) (400 R)     2pts
+(50 B) (100 R) (130 B) (160 B) (200 B) (300 R) (400 B)     2pts
+(50 B) (100 R) (130 B) (200 B) (300 B) (400 R)     2pts
+(50 B) (100 R) (130 B) (300 B) (400 B)     2pts
+(50 B) (100 B) (130 R) (400 B)     2pts
+
+
+ Red black tree 6 (13pts)
+(50 B) (100 R) (200 B) (300 B)     2pts
+(50 R) (100 B) (100 R) (100 R) (100 B) (100 B) (100 B) (200 R) (300 B)     3pts
+(50 R) (100 B) (100 R) (100 R) (100 B) (100 B) (100 R) (300 B)     2pts
+(50 R) (100 B) (100 R) (100 R) (100 B) (100 B) (100 B)     2pts
+(50 R) (100 B) (100 R) (100 B) (100 R) (100 B)     2pts
+(50 R) (100 B) (100 R) (100 B) (100 B)     2pts

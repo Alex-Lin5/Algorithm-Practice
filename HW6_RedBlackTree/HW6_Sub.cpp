@@ -36,83 +36,123 @@ public:
 };
 
 int main() {
-	tree T1;
-	T1.add_node(50);
-	T1.add_node(100);
-	T1.add_node(30);
-	T1.add_node(200);
-	T1.add_node(300);
-	T1.add_node(250);
-	T1.add_node(280);
-	T1.delete_node(200);
+	cout << " Red black tree 3  (8pts)" << endl;
+	tree T3;
+	T3.add_node(50);
+	T3.add_node(100);
+	T3.add_node(30);
+	T3.add_node(200);
+	T3.add_node(300);
+	T3.add_node(250);
+	T3.add_node(280);
+	T3.InorderPrint(T3.root);
+	cout << "    4pts" << endl;
+	T3.delete_node(30);
+
+	T3.InorderPrint(T3.root);
+	cout << "    4pts" << endl;
+
 	cout << endl;
-	T1.InorderPrint(T1.root);
-	// T1.add_node(40);
-	// T1.add_node(100);
-	// T1.add_node(400);
-	// T1.add_node(208);
-	// T1.add_node(300);
-	// T1.add_node(255);
-	// T1.add_node(28);
-	// cout << endl;
-	// T1.InorderPrint(T1.root);
-  // T1.delete_node(40);
-  // T1.delete_node(100);
-  // T1.delete_node(50);
-  // T1.delete_node(88);
-  // T1.delete_node(30);
-  // T1.delete_node(250);
-  // T1.delete_node(200);
-  // T1.delete_node(300);	
-  // T1.delete_node(280);
-  // // left heavy 7 0, pat 3
-  // T1.add_node(0);
-  // T1.add_node(0);
-  // T1.add_node(0);
-  // T1.add_node(0);
-  // T1.add_node(0);
-  // T1.add_node(0);
-  // T1.add_node(0);
-  // cout << endl;
-  // T1.InorderPrint(T1.root);
-  // T1.delete_node(0);
-  // T1.delete_node(0);
-  // T1.delete_node(0);
-  // T1.delete_node(88);
-  // T1.delete_node(0);
-  // T1.delete_node(0);
-  // T1.delete_node(0);
-  // T1.delete_node(0);	
-  // T1.delete_node(0);
-  // // right heavy, pat 1
-  // T1.add_node(1);
-  // T1.add_node(2);
-  // T1.add_node(3);
-  // T1.add_node(4);
-  // T1.add_node(5);
-  // T1.add_node(6);
-  // T1.add_node(7);
-  // T1.add_node(8);
-  // T1.add_node(9);
-  // T1.add_node(10);
-  // T1.add_node(11);
-  // T1.add_node(12);
-  // T1.add_node(13);
-  // cout << endl;
-  // T1.InorderPrint(T1.root);
-  // T1.delete_node(1);
-  // T1.delete_node(2);
-  // T1.delete_node(3);
-  // T1.delete_node(4);
-  // T1.delete_node(5);
-  // T1.delete_node(6);
-  // T1.delete_node(7);
-  // T1.delete_node(8);
-  // T1.delete_node(9);
-  // T1.delete_node(10);
-  // T1.delete_node(11);
-  // T1.delete_node(12);
-  // T1.delete_node(13);
+	cout << " Red black tree 4 (9pts)" << endl;
+	tree T4;
+	T4.add_node(47);
+	T4.add_node(32);
+	T4.add_node(71);
+	T4.add_node(20);
+	T4.add_node(35);
+	T4.add_node(65);
+	T4.add_node(85);
+
+
+
+	T4.add_node(34);
+	T4.add_node(60);
+	T4.add_node(82);
+	T4.add_node(92);
+
+	T4.InorderPrint(T4.root);
+	cout << "    3pts" << endl;
+	T4.delete_node(47);
+
+	T4.InorderPrint(T4.root);
+	cout << "    3pts" << endl;
+
+	T4.delete_node(60);
+	T4.delete_node(85);
+	T4.InorderPrint(T4.root);
+	cout << "    3pts" << endl;
+
+	cout << endl;
+	cout << endl;
+	cout << " Red black tree 5 (12pts)" << endl;
+	tree T5;
+	T5.add_node(100);
+	T5.add_node(200);
+	T5.add_node(300);
+
+	T5.add_node(400);
+	T5.add_node(50);
+	T5.add_node(150);
+
+	T5.add_node(160);
+	T5.add_node(130);
+	T5.add_node(155);
+	T5.InorderPrint(T5.root);
+	cout << "    2pts" << endl;
+	T5.delete_node(150);
+	T5.InorderPrint(T5.root);
+	cout << "    2pts" << endl;
+	T5.delete_node(155);
+	T5.InorderPrint(T5.root);
+	cout << "    2pts" << endl;
+	T5.delete_node(160);
+	T5.InorderPrint(T5.root);
+	cout << "    2pts" << endl;
+	T5.delete_node(200);
+	T5.InorderPrint(T5.root);
+	cout << "    2pts" << endl;
+	T5.delete_node(300);
+	T5.InorderPrint(T5.root);
+	cout << "    2pts" << endl;
+
+	cout << endl;
+	cout << endl;
+	cout << " Red black tree 6 (13pts)" << endl;
+	tree t6;
+	t6.add_node(100);
+	t6.add_node(50);
+	t6.add_node(200);
+	t6.add_node(300);
+	t6.add_node(100);
+	t6.delete_node(100);
+	t6.InorderPrint(t6.root);
+	cout << "    2pts" << endl;
+
+	t6.add_node(100);
+	t6.add_node(100);
+	t6.add_node(100);
+	t6.add_node(100);
+	t6.add_node(100);
+
+	t6.InorderPrint(t6.root);
+	cout << "    3pts" << endl;
+	t6.delete_node(200);
+	t6.InorderPrint(t6.root);
+	cout << "    2pts" << endl;
+
+	t6.delete_node(300);
+	t6.InorderPrint(t6.root);
+	cout << "    2pts" << endl;
+
+
+	t6.delete_node(100);
+	t6.InorderPrint(t6.root);
+	cout << "    2pts" << endl;
+
+
+	t6.delete_node(100);
+	t6.InorderPrint(t6.root);
+	cout << "    2pts" << endl;
 
 	return 0;
 }

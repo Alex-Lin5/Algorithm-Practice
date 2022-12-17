@@ -36,85 +36,44 @@ public:
 };
 
 int main() {
-	tree T1;
-	// T1.add_node(50);
-	// T1.add_node(100);
-	// T1.add_node(30);
-	// T1.add_node(200);
-	// T1.add_node(300);
-	// T1.add_node(250);
-	// T1.add_node(280);
-	// T1.delete_node(200);
-	// cout << endl;
-	// T1.InorderPrint(T1.root);
-	// T1.add_node(40);
-	// T1.add_node(100);
-	// T1.add_node(400);
-	// T1.add_node(208);
-	// T1.add_node(300);
-	// T1.add_node(255);
-	// T1.add_node(28);
-	// cout << endl;
-	// T1.InorderPrint(T1.root);
-  // T1.delete_node(40);
-  // T1.delete_node(100);
-  // T1.delete_node(50);
-  // T1.delete_node(88);
-  // T1.delete_node(30);
-  // T1.delete_node(250);
-  // T1.delete_node(200);
-  // T1.delete_node(300);	
-  // T1.delete_node(280);
-  // // left heavy 7 0, pat 3
-  // T1.add_node(0);
-  // T1.add_node(0);
-  // T1.add_node(0);
-  // T1.add_node(0);
-  // T1.add_node(0);
-  // T1.add_node(0);
-  // T1.add_node(0);
-  // cout << endl;
-  // T1.InorderPrint(T1.root);
-  // T1.delete_node(0);
-  // T1.delete_node(0);
-  // T1.delete_node(0);
-  // T1.delete_node(88);
-  // T1.delete_node(0);
-  // T1.delete_node(0);
-  // T1.delete_node(0);
-  // T1.delete_node(0);	
-  // T1.delete_node(0);
-  // right heavy, pat 1
-  T1.add_node(1);
-  T1.add_node(2);
-  T1.add_node(3);
-  T1.add_node(4);
-  T1.add_node(5);
-  T1.add_node(6);
-  T1.add_node(7);
-  T1.add_node(8);
-  T1.add_node(9);
-  T1.add_node(10);
-  T1.add_node(11);
-  T1.add_node(12);
-  T1.add_node(13);
-  cout << endl;
-  T1.InorderPrint(T1.root);
-  T1.delete_node(1);
-  T1.delete_node(2);
-  T1.delete_node(3);
-  T1.delete_node(4);
-  T1.delete_node(5);
-  T1.delete_node(6);
-  T1.delete_node(7);
-  T1.delete_node(8);
-  T1.delete_node(9);
-  T1.delete_node(10);
-  T1.delete_node(11);
-  T1.delete_node(12);
-  T1.delete_node(13);
+	cout << endl;
+	cout << " Red black tree 4 (9pts)" << endl;
+	tree T4;
+	T4.add_node(47);
+	T4.add_node(32);
+	T4.add_node(71);
+	T4.add_node(20);
+	T4.add_node(35);
+	T4.add_node(65);
+	T4.add_node(85);
 
+
+
+	T4.add_node(34);
+	T4.add_node(60);
+	T4.add_node(82);
+	T4.add_node(92);
+
+  cout << endl;
+	T4.InorderPrint(T4.root);
+	cout << "    3pts" << endl;
+	T4.delete_node(47);
+
+	cout << endl;
+  T4.InorderPrint(T4.root);
+	cout << "    3pts" << endl;
+
+	cout << endl;
+  T4.delete_node(60);
+	T4.delete_node(85);
+	cout << endl;
+	T4.InorderPrint(T4.root);
+	cout << "    3pts" << endl;
+
+	cout << endl;
+	cout << endl;
 	return 0;
+
 }
 void tree::L_rotate(node* p){
   if(!p){
