@@ -309,7 +309,8 @@ void tree::add_node(int i){
         R_rotate(op->p_Rchild);
         L_rotate(op);
       }
-    } else if(uncle && uncle->color){// case 2, might propogate
+    } else if(gc->color && gc->p_parent->color &&
+      uncle && uncle->color){// case 2, might propogate
       casee = 2;
       gc->p_parent->color = (!gc->p_parent->color)? true:false;
       uncle->color = (!uncle->color)? true:false;
